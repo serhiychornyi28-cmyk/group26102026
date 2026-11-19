@@ -1,0 +1,19 @@
+name: my tests
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  testing_with_pytest_Chorniy_Serhiy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone repo
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: run tests
+        working-directory: project/app
+        run: uv run -m pytest . -v -s
